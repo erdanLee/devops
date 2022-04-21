@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  ldap:
+    image: osixia/openldap
+    ports:
+      - "389:389"
+      - "636:636"
+    environment:
+      - LDAP_ADMIN_PASSWORD=secret
+    volumes:
+      - /external/gerrit/ldap/var:/var/lib/ldap
+      - /external/gerrit/ldap/etc:/etc/ldap/slapd.d
+
+  ldap-admin:
+    image: osixia/phpldapadmin
+    ports:
+      - "6443:443"
+    environment:
+      - PHPLDAPADMIN_LDAP_HOSTS=ldap

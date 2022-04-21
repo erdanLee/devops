@@ -1,0 +1,13 @@
+version: "3"
+services:
+  zentao:
+    image: easysoft/zentao
+    container_name: zentao
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - 9001:80
+    volumes:
+      - /data/devops-compose/zentao/opms:/www/zentaopms
+      - /data/devops-compose/zentao/mysql:/var/lib/mysql

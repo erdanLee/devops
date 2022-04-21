@@ -1,0 +1,27 @@
+version: "3"
+services:
+  gitlab:
+    image: gitlab/gitlab-ce
+    container_name: gitlab
+    restart: always
+    hostname: 'gitlab.ares5k.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.ares5k.com:80'
+        gitlab_rails['gitlab_shell_ssh_port'] = 23
+        #gitlab_rails['smtp_enable'] = true
+        #gitlab_rails['smtp_address'] = "smtp.qq.com"
+        #gitlab_rails['smtp_port'] = 465
+        #gitlab_rails['smtp_user_name'] = "16891544@qq.com"
+        #gitlab_rails['smtp_password'] = "填写自己的授权码"
+        #gitlab_rails['smtp_authentication'] = "login"
+        #gitlab_rails['smtp_enable_starttls_auto'] = true
+        #gitlab_rails['smtp_tls'] = true
+        #gitlab_rails['gitlab_email_from'] = '16891544@qq.com'
+    ports:
+      - '80:80'
+      - '23:22'
+    volumes:
+      - '/data/devops-compose/gitlab/config:/etc/gitlab'
+      - '/data/devops-compose/gitlab/logs:/var/log/gitlab'
+      - '/data/devops-compose/gitlab/data:/var/opt/gitlab'

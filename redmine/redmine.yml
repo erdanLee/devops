@@ -11,7 +11,7 @@ services:
     - /data/devops-compose/redmine/postgresql:/var/lib/postgresql
 
   redmine:
-    build: ./
+#    build: ./
     image: sameersbn/redmine
     depends_on:
     - postgresql

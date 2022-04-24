@@ -1,4 +1,5 @@
-FROM ubuntu:focal-20220316 AS add-apt-repositories
+FROM ubuntu:focal-20220316
+# AS add-apt-repositories
 
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y wget gnupg2 \

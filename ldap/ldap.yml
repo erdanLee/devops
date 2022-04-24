@@ -9,8 +9,8 @@ services:
     environment:
       - LDAP_ADMIN_PASSWORD=secret
     volumes:
-      - /external/gerrit/ldap/var:/var/lib/ldap
-      - /external/gerrit/ldap/etc:/etc/ldap/slapd.d
+      - /data/devops-compose/ldap/var:/var/lib/ldap
+      - /data/devops-compose/ldap/etc:/etc/ldap/slapd.d
 
   ldap-admin:
     image: osixia/phpldapadmin

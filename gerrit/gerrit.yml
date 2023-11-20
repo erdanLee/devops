@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   gerrit:
     image: gerritcodereview/gerrit
@@ -11,16 +10,18 @@ services:
     depends_on:
       - postgres
     volumes:
-     - /data/devops-compose/gerrit/etc:/var/gerrit/etc
-     - /data/devops-compose/gerrit/git:/var/gerrit/git
-     - /data/devops-compose/gerrit/index:/var/gerrit/index
-     - /data/devops-compose/gerrit/cache:/var/gerrit/cache
+      - /data/devops-compose/gerrit/etc:/var/gerrit/etc
+      - /data/devops-compose/gerrit/git:/var/gerrit/git
+      - /data/devops-compose/gerrit/index:/var/gerrit/index
+      - /data/devops-compose/gerrit/cache:/var/gerrit/cache
+    environment:
+      - CANONICAL_WEB_URL=http://47.103.158.239:8088/
 #    entrypoint: java -jar /var/gerrit/bin/gerrit.war init -d /var/gerrit
 
   postgres:
     image: postgres:9.6
     environment:
-      - POSTGRES_USER=gerrit
+      - POSTGRES_USER=root
       - POSTGRES_PASSWORD=secret
       - POSTGRES_DB=reviewdb
     volumes:

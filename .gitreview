@@ -2,5 +2,5 @@
 host=47.103.158.239
 port=29418
 project=devops
-defaultbranch=master
+defaultbranch=main
 
